@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="download.jpeg" type="image/png">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Adjusted to stack content vertically */
+            height: 100vh;
+            margin: 0;
+            background-color: #e7e2e2; /* Change background color */
+        }
+
+        .calculator {
+            width: 300px;
+            background-color: #8dbcdf; /* Change calculator background color */
+            border: 2px solid #95a5a6; /* Change border color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        #display {
+            width: 94%;
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 1.5em;
+            border: 1px solid #581845; /* Change border color */
+            border-radius: 10px;
+            background-color: #fff2cc;
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 3.5px;
+        }
+
+        button {
+            padding: 19px;
+            font-size: 1em;
+            background-color: #103a57; /* Change button color */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button.equals {
+            background-color: #ff0000; /* Change the color of the equals button to red */
+        }
+
+        button:active {
+            background-color: #860e49; /* Change active color */
+        }
+
+        #creator-info {
+            margin-top: 20px; /* Add some space above the creator info */
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        #follow-me {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+        }
+
+        #logo {
+            width: 50px; /* Adjust the width of the logo */
+            height: 50px; /* Adjust the height of the logo */
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        
+        <input type="text" id="display" readonly>
+        <div class="keys">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="appendToDisplay('^')">^</button>
+            <button onclick="backspace()">←</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button class="equals" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <p id="creator-info">𝘾𝙧𝙚𝙖𝙩𝙚𝙙 𝙬𝙞𝙩𝙝 ❤️<br> 𝙗𝙮 𝙎𝙖𝙜𝙣𝙞𝙠 𝘿𝙚𝙮
+    </p>
+
+    <!-- Follow me on social media -->
+    <div id="follow-me">
+        <p>𝚏𝚘𝚕𝚕𝚘𝚠 𝚖𝚎 𝚘𝚗</p>
+        <a href="https://www.linkedin.com/in/saagniik/" target="_blank"><img class="social-icon" src="linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/sagnik.ai/" target="_blank"><img class="social-icon" src="instagram.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@developersagnik" target="_blank"><img class="social-icon" src="youtube.png" alt="YouTube"></a>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function backspace() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculateResult() {
+            try {
+                // Use the '**' operator for exponentiation in JavaScript
+                display.value = eval(display.value.replace('^', '**'));
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
